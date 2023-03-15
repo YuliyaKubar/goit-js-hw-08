@@ -27,14 +27,7 @@ function creatGalleryItems() {
     .join('');
 }
 
-gallery.innerHTML = galleryCreate;
-
-gallery.addEventListener('click', onGalleryItemsClick);
-
-function onGalleryItemsClick(event) {
-  event.preventDefault();
-  const instance = basicLightbox.create(`
-		<img width="1400" height="900" src="${event.target.dataset.source}">
-	`);
-  instance.show();
-}
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
