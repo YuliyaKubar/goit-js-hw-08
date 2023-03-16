@@ -8,12 +8,19 @@ form.addEventListener('submit', onSubmitForm);
 form.addEventListener('input', throttle(onTextareaInput, 500));
 
 const STORAGE_KEY = 'feedback-form-state';
-const formData = {};
+let formData = {};
 
 function onSubmitForm(event) {
   event.preventDefault();
+  const {
+    elements: { email, message },
+  } = event.currentTarget;
+  if (email.value === '' || message.value === '') {
+    return alert(`Заполните все поля!`);
+  }
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
+  formData = {};
   console.log(formData);
 }
 
