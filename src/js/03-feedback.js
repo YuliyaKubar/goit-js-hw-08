@@ -18,11 +18,10 @@ function onSubmitForm(event) {
   if (email.value === '' || message.value === '') {
     return alert(`Заполните все поля!`);
   }
-  JSON.parse(localStorage.getItem(STORAGE_KEY));
+
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
-  formData = {};
-  console.log(formData);
+  console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
 }
 
 function onTextareaInput(event) {
